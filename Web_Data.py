@@ -3,20 +3,13 @@ import json
 import ssl
 import webbrowser
 
-api_key = 1
-serviceurl = 'http://py4e-data.dr-chuck.net/json?'
+serviceurl = 'http://google.com/finance'
 
 ctx = ssl.create_default_context()
 ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
 
+uh = urllib.request.urlopen(serviceurl, context=ctx)
 
-while True:
-    address = input('\n'+'Enter location: ')
-    typeofbusiness = input('\n'+'Provide the type of business to search: ')
-    if len(address) < 1: break
-
-    parms = dict()
-    parms['address'] = address
-    parms['key'] = api_key
-    url = serviceurl + urllib.parse.urlencode(parms)
+Data = uh.read().decode()
+Jason = json.loads(Data)
