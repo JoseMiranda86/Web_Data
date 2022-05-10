@@ -23,3 +23,20 @@ try:
                     Signal = -2
 except:
         index = 0
+
+if index == 0:
+    ServiceURL = 'https://google.com/finance/options'
+    uh = urllib.request.urlopen(ServiceURL, context=ctx)
+
+    Data1 = uh.read().decode()
+    Jason1 = json.loads(Data1)
+
+    try:
+        SectionIndex = Jason1['parse']['sections']
+        for element in SectionIndex:
+            for a, b in element.items():
+                if b == 'Discography':
+                    index = element['index']
+                    Signal = -1
+    except:
+        index = 0   
