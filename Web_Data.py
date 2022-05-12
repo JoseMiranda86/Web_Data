@@ -35,8 +35,21 @@ if index == 0:
         SectionIndex = Jason1['parse']['sections']
         for element in SectionIndex:
             for a, b in element.items():
-                if b == 'Discography':
+                if b == 'Price':
                     index = element['index']
                     Signal = -1
     except:
         index = 0   
+
+uh2 = urllib.request.urlopen(serviceurl2, context=ctx)
+data2 = uh2.read().decode()
+Jason2 = json.loads(data2)
+
+print('\n')
+
+SectionIndex2 = Jason2['parse']['wikitext']
+
+x = SectionIndex2['*']
+list = x.split("*")
+list2 = list[0].split('\n')
+
