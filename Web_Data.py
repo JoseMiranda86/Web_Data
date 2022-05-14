@@ -53,3 +53,27 @@ x = SectionIndex2['*']
 list = x.split("*")
 list2 = list[0].split('\n')
 
+for word in list2:
+    if word.startswith('{| '):
+        if Signal == -1:
+            print('Options prices')
+            webbrowser.open('https://google.com/finance/options')
+            exit()
+
+print('\n', 'Options','\n')
+count = 0
+for Set in list:
+    if Set.startswith("''") or Set.startswith(" ''") or Set.startswith(" "):
+        count = count + 1
+        Set2 = Set.rstrip()
+        Set3 = Set2.strip()
+        pos = Set3.find('\n')
+        pos2 = Set3.find('<ref>')
+        if pos == -1 and pos2 == -1:
+            print(count,'-',Set3)
+        elif pos != -1:
+            print(count,'-',Set3[0:pos])
+        else:
+            print(count,'-',Set3[0:pos2])
+
+print('\n')      
