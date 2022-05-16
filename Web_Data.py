@@ -17,10 +17,9 @@ Jason = json.loads(Data)
 try:
         SectionIndex = Jason['parse']['sections']
         for element in SectionIndex:
-            for a, b in element.items():
-                if b == 'Options':
+            for x, y in element.items():
+                if y == 'Options':
                     index = element['index']
-                    Signal = -2
 except:
         index = 0
 
@@ -28,11 +27,11 @@ if index == 0:
     ServiceURL = 'https://google.com/finance/options'
     uh = urllib.request.urlopen(ServiceURL, context=ctx)
 
-    Data1 = uh.read().decode()
-    Jason1 = json.loads(Data1)
+    Data = uh.read().decode()
+    Jason = json.loads(Data)
 
     try:
-        SectionIndex = Jason1['parse']['sections']
+        SectionIndex = Jason['parse']['sections']
         for element in SectionIndex:
             for a, b in element.items():
                 if b == 'Price':
@@ -41,7 +40,7 @@ if index == 0:
     except:
         index = 0   
 
-uh2 = urllib.request.urlopen(serviceurl2, context=ctx)
+uh2 = urllib.request.urlopen(ServiceURL, context=ctx)
 data2 = uh2.read().decode()
 Jason2 = json.loads(data2)
 
@@ -61,19 +60,3 @@ for word in list2:
             exit()
 
 print('\n', 'Options','\n')
-count = 0
-for Set in list:
-    if Set.startswith("''") or Set.startswith(" ''") or Set.startswith(" "):
-        count = count + 1
-        Set2 = Set.rstrip()
-        Set3 = Set2.strip()
-        pos = Set3.find('\n')
-        pos2 = Set3.find('<ref>')
-        if pos == -1 and pos2 == -1:
-            print(count,'-',Set3)
-        elif pos != -1:
-            print(count,'-',Set3[0:pos])
-        else:
-            print(count,'-',Set3[0:pos2])
-
-print('\n')      
