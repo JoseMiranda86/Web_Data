@@ -40,23 +40,11 @@ if index == 0:
     except:
         index = 0   
 
-uh2 = urllib.request.urlopen(ServiceURL, context=ctx)
-data2 = uh2.read().decode()
-Jason2 = json.loads(data2)
+dictio = []
 
-print('\n')
+for element in SectionIndex:
+    for a, b in element.items():
+        if b == 'Price':
+            dictio[b] = a
 
-SectionIndex2 = Jason2['parse']['wikitext']
-
-x = SectionIndex2['*']
-list = x.split("*")
-list2 = list[0].split('\n')
-
-for word in list2:
-    if word.startswith('{| '):
-        if Signal == -1:
-            print('Options prices')
-            webbrowser.open('https://google.com/finance/options')
-            exit()
-
-print('\n', 'Options','\n')
+print dictio
