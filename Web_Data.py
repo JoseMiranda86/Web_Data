@@ -48,3 +48,10 @@ for element in SectionIndex:
             dictio[b] = a
 
 print dictio
+
+for word in list2:
+    if word.startswith('{| '):
+        if Signal == -1:
+            print(diction[0])
+            webbrowser.open('https://google.com/finance/options/+'diction[0]'')
+            exit()
