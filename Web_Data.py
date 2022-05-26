@@ -1,3 +1,4 @@
+from optparse import Option
 import urllib.request, urllib.parse, urllib.error
 import json
 import ssl
@@ -55,3 +56,21 @@ for word in list2:
             print(diction[0])
             webbrowser.open('https://google.com/finance/options/+'diction[0]'')
             exit()
+
+print('\n', 'DISCOGRAPHY','\n')
+count = 0
+for album in list:
+    if album.startswith("''") or Option.startswith(" ''") or Option.startswith(" "):
+        count = count + 1
+        Price = album.rstrip()
+        Expiration = Price.strip()
+        pos = Expiration.find('\n')
+        pos2 = Expiration.find('<ref>')
+        if pos == -1 and pos2 == -1:
+            print(count,'-',Expiration)
+        elif pos != -1:
+            print(count,'-',Expiration[0:pos])
+        else:
+            print(count,'-',Expiration[0:pos2])
+
+print('\n')            
