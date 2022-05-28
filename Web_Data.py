@@ -48,21 +48,19 @@ for element in SectionIndex:
         if b == 'Price':
             dictio[b] = a
 
-print dictio
-
-for word in list2:
+for word in dictio:
     if word.startswith('{| '):
         if Signal == -1:
-            print(diction[0])
+            print(dictio[0])
             webbrowser.open('https://google.com/finance/options/+'diction[0]'')
             exit()
 
-print('\n', 'DISCOGRAPHY','\n')
+print('\n', 'PRICES','\n')
 count = 0
-for album in list:
-    if album.startswith("''") or Option.startswith(" ''") or Option.startswith(" "):
+for Quote in list:
+    if Quote.startswith("''") or Option.startswith(" ''") or Option.startswith(" "):
         count = count + 1
-        Price = album.rstrip()
+        Price = Quote.rstrip()
         Expiration = Price.strip()
         pos = Expiration.find('\n')
         pos2 = Expiration.find('<ref>')
