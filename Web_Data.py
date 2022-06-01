@@ -71,4 +71,17 @@ for Quote in list:
         else:
             print(count,'-',Expiration[0:pos2])
 
-print('\n')            
+print('\n')  
+
+while True:
+    address = input('\n'+'Enter location: ')
+    typeofbusiness = input('\n'+'Provide the type of business to search: ')
+    if len(address) < 1: break
+
+    parms = dict()
+    parms['address'] = address
+    parms['key'] = api_key
+    url = serviceurl + urllib.parse.urlencode(parms)
+
+    uh = urllib.request.urlopen(url, context=ctx)
+    data = uh.read().decode()
