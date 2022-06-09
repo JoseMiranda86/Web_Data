@@ -41,16 +41,5 @@ if index == 0:
     except:
         index = 0   
 
-dictio = []
 
-for element in SectionIndex:
-    for a, b in element.items():
-        if b == 'Price':
-            dictio[b] = a
 
-for word in dictio:
-    if word.startswith('{| '):
-        if Signal == -1:
-            print(dictio[0])
-            webbrowser.open('https://google.com/finance/options/+'diction[0]'')
-            exit()
