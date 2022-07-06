@@ -37,7 +37,7 @@ if index == 0:
             for a, b in element.items():
                 if b == 'Price':
                     index = element['index']
-                    Signal = -1
+                    Signal = 1
     except:
         index = 0   
     
